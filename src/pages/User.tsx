@@ -1,5 +1,6 @@
 'use client';
 
+import AppBar from '@/components/layout/AppBar';
 import { Column, DataTable } from '@/components/ui/data-table';
 import { Edit, Eye } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -76,5 +77,10 @@ export default function UserPage() {
     </div>
   );
 
-  return <DataTable columns={columns} data={data} pageSize={10} actions={actions} />;
+  return (
+    <div className="flex-col">
+      <AppBar name="User"></AppBar>
+      <DataTable columns={columns} data={data} pageSize={10} actions={actions} />;
+    </div>
+  );
 }
