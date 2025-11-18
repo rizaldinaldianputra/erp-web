@@ -67,7 +67,14 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
       >
         {/* HEADER */}
         <div className="flex items-center justify-between p-4 border-b">
-          {!collapsed && <h2 className="text-lg font-bold">Cosmic</h2>}
+          {!collapsed && (
+            <img
+              src="/cosmic.png"
+              alt="Cosmic"
+              className="h-16 w-auto" // memperbesar tinggi menjadi 16
+            />
+          )}
+
           <button onClick={onToggle} className="p-2 rounded hover:bg-gray-100 transition">
             <FiMenu size={20} />
           </button>
