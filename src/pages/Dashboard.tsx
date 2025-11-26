@@ -1,3 +1,5 @@
+import AiCosmicChat from '@/components/ui/aicosmic';
+import { useState } from 'react';
 import {
   Area,
   AreaChart,
@@ -57,8 +59,14 @@ const radarData = [
 const radialData = [{ name: 'On-Time Delivery', value: 93, fill: '#82ca9d' }];
 
 export default function Dashboard() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [messages, setMessages] = useState<{ from: 'user' | 'ai'; text: string }[]>([]);
+  const [input, setInput] = useState('');
+
+  const handleSend = () => {};
+
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 relative min-h-screen">
       <h1 className="text-3xl font-bold">ERP Dashboard</h1>
 
       {/* Cards */}
@@ -191,6 +199,7 @@ export default function Dashboard() {
           </ResponsiveContainer>
         </div>
       </div>
+      <AiCosmicChat></AiCosmicChat>
     </div>
   );
 }

@@ -18,6 +18,7 @@ export interface DataTableProps<T> {
   data: T[];
   pageSize?: number;
   actions?: (row: T) => React.ReactNode;
+  route?: () => React.ReactNode;
 }
 
 export function DataTable<T extends Record<string, any>>({
@@ -25,6 +26,7 @@ export function DataTable<T extends Record<string, any>>({
   data,
   pageSize = 10,
   actions,
+  route,
 }: DataTableProps<T>) {
   const [filterText, setFilterText] = useState('');
 

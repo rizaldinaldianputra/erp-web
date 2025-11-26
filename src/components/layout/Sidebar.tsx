@@ -1,6 +1,7 @@
 'use client';
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { useAuth } from '@/hooks/useAuth';
 import { cn } from '@/lib/utils';
 import React, { useState } from 'react';
 import {
@@ -34,6 +35,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
   const location = useLocation();
   const [openGroups, setOpenGroups] = useState<{ [key: string]: boolean }>({});
+  const { logout } = useAuth();
 
   const toggleGroup = (label: string) => {
     setOpenGroups((prev) => ({
@@ -67,13 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
       >
         {/* HEADER */}
         <div className="flex items-center justify-between p-4 border-b">
-          {!collapsed && (
-            <img
-              src="/cosmic.png"
-              alt="Cosmic"
-              className="h-16 w-auto" // memperbesar tinggi menjadi 16
-            />
-          )}
+          {!collapsed && <img src="/logo.png" alt="Cosmic" />}
 
           <button onClick={onToggle} className="p-2 rounded hover:bg-gray-100 transition">
             <FiMenu size={20} />
@@ -218,9 +214,13 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
               <span className="text-sm font-medium">Admin Name</span>
               <span className="text-xs text-gray-500">admin@example.com</span>
             </div>
-            <button className="flex items-center gap-1 text-red-600 hover:bg-gray-100 p-2 rounded">
+            <button
+              onSubmit={() => {
+                return logout;
+              }}
+              className="flex items-center gap-1 text-red-600 hover:bg-gray-100 p-2 rounded"
+            >
               <FiLogOut />
-              <span>Logout</span>
             </button>
           </div>
         )}

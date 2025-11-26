@@ -1,5 +1,5 @@
+import { BASE_URL } from '@/constant/config';
 import axios, { AxiosError } from 'axios';
-import { BASE_URL } from '../constant/config';
 import { getToken } from '../session/session';
 
 // Membuat instance Axios
@@ -8,7 +8,6 @@ const createApi = (baseURL: string = BASE_URL) =>
     baseURL,
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': import.meta.env.VITE_API_KEY, // hidden di env
       Accept: 'application/json',
     },
   });
@@ -18,6 +17,7 @@ const api = createApi();
 // Interceptor request: tambahkan token jika ada
 api.interceptors.request.use(async (config) => {
   const token = await getToken();
+  console.log(token);
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });

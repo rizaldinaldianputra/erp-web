@@ -1,0 +1,56 @@
+<svg width="300" height="100" viewBox="0 0 300 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definisi Gradasi -->
+  <defs>
+    <linearGradient id="cosmicGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6a11cb" />
+      <stop offset="100%" stop-color="#2575fc" />
+    </linearGradient>
+    
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Kliping untuk Avatar agar masuk ke lingkaran -->
+    <clipPath id="circleView">
+        <circle cx="50" cy="50" r="24" />
+    </clipPath>
+  </defs>
+
+  <!-- Background Utama (Pill Shape) -->
+  <rect x="5" y="15" width="290" height="70" rx="35" fill="url(#cosmicGrad)" filter="url(#glow)"/>
+  
+  <!-- === BAGIAN AVATAR CS === -->
+  
+  <!-- 1. Lingkaran Latar Avatar (Putih Transparan) -->
+  <circle cx="50" cy="50" r="28" fill="white" fill-opacity="0.15" stroke="white" stroke-width="1"/>
+  
+  <!-- 2. Orbit/Cincin Futuristik -->
+  <ellipse cx="50" cy="50" rx="32" ry="10" stroke="#00FFFF" stroke-width="1.5" transform="rotate(-30 50 50)" opacity="0.8"/>
+
+  <!-- 3. Gambar User/Robot (Customer Service) -->
+  <g clip-path="url(#circleView)">
+    <!-- Badan -->
+    <rect x="20" y="20" width="60" height="60" fill="transparent"/>
+    <!-- Bahu/Baju -->
+    <path d="M26 65C26 57 35 55 50 55C65 55 74 57 74 65V80H26V65Z" fill="white"/>
+    <!-- Kepala -->
+    <circle cx="50" cy="42" r="10" fill="white"/>
+  </g>
+
+  <!-- 4. Headset & Mic (Agar terlihat seperti CS) -->
+  <path d="M40 42C40 35 44 31 50 31C56 31 60 35 60 42" stroke="#00FFFF" stroke-width="2" stroke-linecap="round"/>
+  <path d="M60 42L60 48L54 50" stroke="#00FFFF" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="40" cy="42" r="2" fill="#00FFFF"/> <!-- Earpiece -->
+
+  <!-- === TEKS === -->
+  <text x="95" y="45" font-family="Arial, sans-serif" font-weight="bold" font-size="18" fill="white">AI COSMIC</text>
+  <text x="95" y="65" font-family="Arial, sans-serif" font-size="12" fill="#E0E0E0">Klik ini mulai dengan AI</text>
+  
+  <!-- Indikator Online (Titik Hijau di dekat avatar) -->
+  <circle cx="72" cy="32" r="4" fill="#00FF00" stroke="#6a11cb" stroke-width="1"/>
+
+  <!-- Dekorasi Bintang -->
+  <circle cx="270" cy="30" r="2" fill="white" opacity="0.8"/>
+  <circle cx="250" cy="70" r="1.5" fill="white" opacity="0.6"/>
+</svg>
